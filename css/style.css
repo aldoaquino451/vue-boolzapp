@@ -1,0 +1,37 @@
+
+body {
+  font-family: Roboto Slab;
+}
+
+:root {
+  --bg-color-up: #009688;
+  --bg-color-down: #dcdbd1;
+  --boolzap-header: #eaeaea;
+  --updates-lightblue: #8edafc;
+  --active-chat: #e9ebeb;
+  --message-left: #ffffff;
+  --message-right: #d5f9ba;
+  --icons: #b1b1b1;
+  --last-message: #bbc6d4;
+}
+
+#app {
+  height: 100vh;
+  background-image: linear-gradient(var(--bg-color-up) 0 100px, var(--bg-color-down) 100px 100%);
+}
+
+#boolzap-viewport {
+  height: 80%;
+  width: 80%;
+  max-width: 1400px;
+  background-color: aliceblue;
+}
+
+#boolzap-side {
+  width: 35%;
+  border-right: 1px solid black;
+}
+
+#boolzap-main {
+  width: 65%;
+}
