@@ -13,6 +13,10 @@ body {
   --message-right: #d5f9ba;
   --icons: #b1b1b1;
   --last-message: #bbc6d4;
+  --my-account: 70px;
+  --notifications: 80px;
+  --search: 50px;
+  --chat: 80px;
 }
 
 #app {
@@ -27,10 +31,38 @@ body {
   background-color: aliceblue;
 }
 
+/* --------- BARRA LATERALE ---------- */
+
 #boolzap-side {
   width: 35%;
   border-right: 1px solid black;
 }
+
+#boolzap-side img {
+  height: 100%;
+}
+
+#boolzap-side .image {
+  width: max-content;
+}
+
+#boolzap-side .my-account {
+  height: var(--my-account);
+  background-color: var(--boolzap-header);
+}
+#boolzap-side .notifications {
+  height: var(--notifications);
+  background-color: var(--updates-lightblue);
+}
+#boolzap-side .search {
+  height: var(--search);
+}
+#boolzap-side .chat {
+  height: var(--chat);
+}
+
+
+/* --------- BARRA PRINCIPALE ---------- */
 
 #boolzap-main {
   width: 65%;

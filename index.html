@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- vue file  -->
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+  <!-- bootstrap  -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.css" integrity="sha512-r0fo0kMK8myZfuKWk9b6yY8azUnHCPhgNz/uWDl2rtMdWJlk7gmd9socvGZdZzICwAkMgfTkVrplDahQ07Gi0A==" crossorigin="anonymous"/>
+
+  <!-- google font  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- font awesome  -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.css" integrity="sha512-KOWhIs2d8WrPgR4lTaFgxI35LLOp5PRki/DxQvb7mlP29YZ5iJ5v8tiLWF7JLk5nDBlgPP1gHzw96cZ77oD7zQ==" crossorigin="anonymous"/>
+
+  <!-- css file  -->
+  <link rel="stylesheet" href="./css/style.css">
+
+  <!-- titolo  -->
+  <title>Boolzapp </title>
+
+</head>
+
+<body>
+
+  <div id="app" class="d-flex justify-content-center align-items-center ">
+    <div id="boolzap-viewport" class="d-flex flex-column">
+
+      <div id="boolzap-side" class="">
+
+        <div class="my-account d-flex justify-content-between p-2">
+          <div class="my-avatar">
+            <div class="image h-100">
+              <img class="img-fluid" src="./img/avatar_io.jpg" alt="my avatar">
+            </div>
+            <span>mio nome</span>
+          </div>
+          <div class="icons d-flex">
+            icona1 icona2 icona3
+          </div>
+        </div>
+
+        <div class="notifications d-flex p-2">
+          <div>
+            icona
+          </div>
+          <div class="d-flex flex-column">
+            <span class="fw-bold">Ricevi notifiche di nuovi messaggi</span>
+            <span class="text-decoration-underline">Attiva notifiche desktop</span>
+          </div>
+        </div>
+
+        <div class="search">
+          <input type="text" placeholder="Cerca o inizia una nuova chat">
+        </div>
+
+        <div class="list-chats">
+          <div class="chat d-flex">
+            <div class="">
+              <img class="img-fluid" src="./img/avatar_1.jpg" alt="primo tizio">
+            </div>
+
+            <div class="d-flex justify-content-between">
+              <div class="d-flex flex-column ">
+                <span>Michele</span>
+                <span>Ultimo messaggio inviato</span>
+              </div>
+              <span>12:00</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      
+      <div id="boolzap-main" class="">
+
+      </div>
+
+    </div>
+  </div>
+
+  <script src="./js/script.js"></script>
+    
+</body>
+
+</html>
