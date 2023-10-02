@@ -31,25 +31,25 @@
 <body>
 
   <div id="app" class="d-flex justify-content-center align-items-center ">
-    <div id="boolzap-viewport" class="d-flex flex-column">
+    <div id="boolzap-viewport" class="d-flex">
 
-      <div id="boolzap-side" class="">
+      <div id="boolzap-side" class="d-flex flex-column ">
 
-        <div class="my-account d-flex justify-content-between p-2">
-          <div class="my-avatar">
-            <div class="image h-100">
-              <img class="img-fluid" src="./img/avatar_io.jpg" alt="my avatar">
-            </div>
+        <div class="my-account d-flex justify-content-between  ">
+          <div class="my-avatar d-flex align-items-center gap-2 ">
+            <img src="./img/avatar_io.jpg" alt="my avatar">
             <span>mio nome</span>
           </div>
-          <div class="icons d-flex">
-            icona1 icona2 icona3
+          <div class="icons d-flex gap-2 align-items-center">
+            <i class="fa-solid fa-circle-notch"></i>  
+            <i class="fa-solid fa-message"></i>
+            <i class="fa-solid fa-ellipsis-vertical"></i>
           </div>
         </div>
 
-        <div class="notifications d-flex p-2">
+        <div class="notifications d-flex gap-3 align-items-center">
           <div>
-            icona
+            <i class="fa-solid fa-bell-slash"></i>
           </div>
           <div class="d-flex flex-column">
             <span class="fw-bold">Ricevi notifiche di nuovi messaggi</span>
@@ -58,28 +58,79 @@
         </div>
 
         <div class="search">
-          <input type="text" placeholder="Cerca o inizia una nuova chat">
+          <input class="w-100 border-0 rounded-1 p-1" type="text" placeholder="Cerca o inizia una nuova chat">
+          <i class="fa-solid fa-magnifying-glass"></i>
         </div>
 
-        <div class="list-chats">
-          <div class="chat d-flex">
-            <div class="">
-              <img class="img-fluid" src="./img/avatar_1.jpg" alt="primo tizio">
-            </div>
+        <div class="chats-list">
 
-            <div class="d-flex justify-content-between">
+          <div class="chat-thumb d-flex"
+          v-for="contact in contacts"
+          >
+            <img :src="contact.avatar" alt="primo tizio">
+            <div class="d-flex justify-content-between w-100">
               <div class="d-flex flex-column ">
-                <span>Michele</span>
+                <span>{{ contact.name }}</span>
                 <span>Ultimo messaggio inviato</span>
               </div>
               <span>12:00</span>
             </div>
           </div>
+          
         </div>
 
       </div>
       
-      <div id="boolzap-main" class="">
+      <div id="boolzap-main" class="d-flex flex-column">
+        
+        <div class="receiver d-flex justify-content-between ">
+          <div class="d-flex gap-2 align-items-center">
+            <img src="./img/avatar_1.jpg" alt="avatar 1">
+            <div class="d-flex flex-column">
+              <span>nome</span>
+              <span>ultimo accessp</span>
+            </div>
+          </div>
+          <div class="d-flex gap-2 align-items-center">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <i class="fa-solid fa-paperclip"></i>
+            <i class="fa-solid fa-ellipsis-vertical"></i>
+          </div>
+        </div>
+
+        <div class="chat d-flex flex-column gap-2">
+          <div class="d-flex justify-content-end">
+            <div class="message my-message">
+              <span>Hai portato a spasso il cane?</span>
+              <span class="time-message">12:00</span>
+              <i class="fa-solid fa-chevron-down"></i>
+            </div>
+          </div>
+          <div class="d-flex justify-content-end">
+            <div class="message my-message">
+              <span>Ricordati di stendere i panni</span>
+              <span class="time-message">13 :00</span>
+              <i class="fa-solid fa-chevron-down"></i>
+            </div>
+          </div>
+          <div class="d-flex justify-content-start">
+            <div class="message receiver-message">
+              <span>Tutto fatto! 🍁</span>
+              <span class="time-message">14:00</span>
+              <i class="fa-solid fa-chevron-down"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="input-message d-flex align-items-center">
+          <div class="icon">
+            <i class="fa-regular fa-face-smile"></i>
+          </div>
+          <input type="text" placeholder="Scrivi un messaggio">
+          <div class="icon">
+            <i class="fa-solid fa-microphone"></i>
+          </div>
+        </div>
 
       </div>
 
