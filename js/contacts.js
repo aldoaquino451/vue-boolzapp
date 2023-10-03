@@ -162,6 +162,4 @@ const contacts = [
   },
 ];
 
-const saluto = 'ciao'
-
-export { contacts, saluto };
+export default contacts;

@@ -1,42 +1,57 @@
 /*
-  - alle thumb chat aggiungiamo una funzione al click, questa funzione ci permetterà di aggiugnere la classe hide all'elemento chat corrispondente e attiverà la thumb (modificando il background)
-  - assegnamo all'input un v-model e dentro una variabile per salvare il dato inserito
-      - con una funzione che si attiva con il tasto enter pushamo un nuovo oggetto dentro l'array messages corrispondente al contatto della chat corrispondete
-      - il testo sarà dato dall'input, per la data salviamo la data corrente in una costante, lo status sarà di default sent
-  - alla funzione richiamata con enter deve partire un settimeout di 1000 ms in cui verrà visualizzato un messaggio con 
-      - testo ok, status received, e data sempre quella corrente
+
+  - con la libreria luxon inserisci la data precisa
 
 */
 
-import { saluto, contacts } from "./contacts.js";
+import contacts from "./contacts.js";
 const { createApp } = Vue;
 
 createApp ({
 
   data() {
     return {
-      saluto,
-      contacts,
+    
+      contacts, // importato
+
       counter: 0,
+      newTextMessage: '',
+
     }
   },
 
   methods: {
-    salutare() {
-      console.log(this.saluto);
-    },
 
     activeThumb(index) {
       this.contacts[this.counter].visible = !this.contacts[this.counter].visible;
       this.counter = index;
       this.contacts[this.counter].visible = !this.contacts[this.counter].visible;
+    },
+
+    addNewTextMessage() {
+      this.contacts[this.counter].messages.push({
+        date: '10/01/2020 15:30:55',
+        text: this.newTextMessage,
+        status: 'sent'
+      });
+
+      this.newTextMessage = '';
+
+      setTimeout( () => {
+        this.contacts[this.counter].messages.push({
+          date: '10/01/2020 15:30:55',
+          text: 'Va bene!',
+          status: 'received'
+        });
+  
+      }, 1000);
     }
 
   },
 
   mounted() {
-    this.salutare()
-    // setTimeout();
+    console.log(this.contacts[this.counter].messages[0].text);
+
   }
 
 }).mount('#app')

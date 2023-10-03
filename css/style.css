@@ -28,6 +28,7 @@ img {
 i {
   font-size: 16px;
   color: var(--icons);
+  cursor: pointer;
 }
 
 #app {
@@ -73,6 +74,7 @@ i {
 
 #boolzap-side .chat-thumb-list .chat-thumb {
   padding: 10px;
+  cursor: pointer;
 }
 
 #boolzap-side .chat-thumb-list .chat-thumb:hover {
@@ -171,6 +173,10 @@ i {
 
 .hidden_a {
   display: none;
+}
+
+.active_a {
+  background-color: var(--active-chat);
 }
 
 /*
