@@ -11,7 +11,7 @@ createApp ({
     return {
       saluto,
       contacts,
-      
+
     }
   },
 
@@ -23,6 +23,7 @@ createApp ({
 
   mounted() {
     this.salutare()
+    // setTimeout();
   }
 
 }).mount('#app')
