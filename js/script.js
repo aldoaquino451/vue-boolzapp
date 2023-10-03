@@ -5,6 +5,7 @@
 */
 
 import contacts from "./contacts.js";
+const dt = luxon.DateTime;
 const { createApp } = Vue;
 
 createApp ({
@@ -40,18 +41,21 @@ createApp ({
       setTimeout( () => {
         this.contacts[this.counter].messages.push({
           date: '10/01/2020 15:30:55',
-          text: 'Va bene!',
+          text: 'ok!',
           status: 'received'
         });
-  
-      }, 1000);
-    }
+      }, 1000)
 
+    },
+
+    
   },
 
   mounted() {
     console.log(this.contacts[this.counter].messages[0].text);
-
+    const dtNow = dt.now();
+    const dtNowIt = dt.now().setLocale('it');
+    console.log(dtNowIt.minute);
   }
 
 }).mount('#app')
