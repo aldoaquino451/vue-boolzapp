@@ -16,10 +16,6 @@ body {
   --message-right: #d5f9ba;
   --icons: #b1b1b1;
   --last-message: #bbc6d4;
-  --my-account: 70px;
-  --notifications: 80px;
-  --search: 50px;
-  --chat: 80px;
 }
 
 
@@ -69,21 +65,21 @@ i {
   background-color: var(--boolzap-footer);
 }
 
-#boolzap-side .chats-list {
+#boolzap-side .chat-thumb-list {
   overflow: scroll;
 }
 
 /* -------------------------------- */
 
-#boolzap-side .chats-list .chat-thumb {
+#boolzap-side .chat-thumb-list .chat-thumb {
   padding: 10px;
 }
 
-#boolzap-side .chats-list .chat-thumb:hover {
+#boolzap-side .chat-thumb-list .chat-thumb:hover {
   background-color: var(--active-chat);
 }
 
-#boolzap-side .chats-list .chat-thumb img {
+#boolzap-side .chat-thumb-list .chat-thumb img {
   height: 60px;
   width: 60px;
   margin: 0 20px 0 10px;
@@ -101,11 +97,12 @@ i {
   background-color: var(--boolzap-header);
 }
 
-#boolzap-main .chat {
+#boolzap-main .chat-main-list {
   height: 100%;
-  padding: 30px;
+}
+
+#boolzap-main .chat-main {
   background-image: url('../img/mine.jpg');
-  background-repeat: no-repeat;
   background-size: cover;
   overflow: scroll;
 }
@@ -116,20 +113,30 @@ i {
 }
 
 /* ----------------------------- */
-#boolzap-main .chat .message {
+
+
+#boolzap-main .chat-main .sent-message {
+  justify-content: end;
+}
+
+#boolzap-main .chat-main .received-message {
+  justify-content: start;
+}
+
+
+#boolzap-main .chat-main .message {
   position: relative;
   padding: 10px 100px 10px 10px;
-  width: fit-content;
   border-radius: 5px;
+  width: 300px;
 }
-
-#boolzap-main .chat .my-message {
-  background-color: var(--message-right);
-
-}
-#boolzap-main .chat .receiver-message {
+#boolzap-main .chat-main .received-message .message {
   background-color: var(--message-left);
 }
+#boolzap-main .chat-main .sent-message .message {
+  background-color: var(--message-right);
+}
+
 
 #boolzap-main .input-message .icon {
   margin: 0 30px;
@@ -141,22 +148,29 @@ i {
   border-radius: 5px;
 }
 
-#boolzap-main .chat .message .time-message {
+#boolzap-main .chat-main-list .message .time-message {
   position: absolute;
   right: 5px;
   bottom: 2px;
   font-size: 10px;
   color: grey;
 }
-#boolzap-main .chat .message .fa-chevron-down {
+#boolzap-main .chat-main-list .message .fa-chevron-down {
   position: absolute;
   right: 5px;
   top: 2px;
   font-size: 10px;
   display: none;
 }
-#boolzap-main .chat .message:hover .fa-chevron-down {
+#boolzap-main .chat-main-list .message:hover .fa-chevron-down {
   display: block;
+}
+
+
+/* --------- UTILITIES -------- */
+
+.hidden_a {
+  display: none;
 }
 
 /*
