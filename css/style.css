@@ -101,6 +101,7 @@ i {
 
 #boolzap-main .chat-main-list {
   height: 100%;
+  overflow: scroll;
 }
 
 #boolzap-main .chat-main {
@@ -178,6 +179,10 @@ i {
 .active_a {
   background-color: var(--active-chat);
 }
+
+/* .d-flex {
+  display: flex;
+} */
 
 /*
 <i class="fa-solid fa-microphone"></i>
