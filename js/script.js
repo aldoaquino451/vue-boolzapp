@@ -58,13 +58,7 @@ createApp ({
       return contact.messages.at(-1)
     },
 
-    filter() {
-      this.contacts = this.contacts.filter((contact) => {
-        // if (contact.visible === true)  return contact
-        // return contact.visible === true
-        return contact.name.toLowerCase().includes(this.searchInput)
-      }) 
-    },
+
   },
 
   computed: {
@@ -74,7 +68,19 @@ createApp ({
 
     nowDateTime() {
       return dtNow.toLocaleString(dt.DATE_SHORT) + ' ' + dtNow.toLocaleString(dt.TIME_24_WITH_SECONDS);
-    }
+    },
+
+    filteredContacts() {
+      return this.contacts.filter((contact) => {
+        return contact.name.toLowerCase().includes(this.searchInput);
+      })
+    },
+
+    // this.contacts.filter((contact) => {
+    //   // if (contact.visible === true)  return contact
+    //   // return contact.visible === true
+    //   return contact.name.toLowerCase().includes(this.searchInput.toLowerCase())
+    // }) 
   },
 
   mounted() {
@@ -84,10 +90,6 @@ createApp ({
         message.deleted = false
       });
     });
-
-
-
-    console.log(ciao);
   }
 
 }).mount('#app')

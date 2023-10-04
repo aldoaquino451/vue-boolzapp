@@ -66,12 +66,10 @@
             class="form-control" type="text" 
             placeholder="Cerca o inizia una nuova chat"
             v-model="searchInput"
-            @keyup.enter="filter">
+            @keyup.enter="filteredContacts">
             <i class="fa-solid fa-magnifying-glass"></i>
           </div>
         </div>
-        
-        <span>{{searchInput}}</span>
 
         <div class="chat-thumb-list">
 
