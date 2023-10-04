@@ -14,6 +14,13 @@ Click sul contatto mostra la conversazione del contatto cliccato
 Aggiunta di un messaggio: l’utente scrive un testo nella parte bassa e digitando “enter” il testo viene aggiunto al thread sopra, come messaggio verde.   
 Risposta dall’interlocutore: ad ogni inserimento di un messaggio, l’utente riceverà un “ok” come risposta, che apparirà dopo 1 secondo.
 
+#### Milestone 4
+Ricerca utenti: scrivendo qualcosa nell’input a sinistra, vengono visualizzati solo i contatti il cui nome contiene le lettere inserite (es, Marco, Matteo Martina -> Scrivo “mar” rimangono solo Marco e Martina)
+
+#### Milestone 5 - opzionale
+Cancella messaggio: cliccando sul messaggio appare un menu a tendina che permette di cancellare il messaggio selezionato
+
+Visualizzazione ora e ultimo messaggio inviato/ricevuto nella lista dei contatti 
 
 
 ## HTML e JavaScript
@@ -41,4 +48,17 @@ Risposta dall’interlocutore: ad ogni inserimento di un messaggio, l’utente r
     - il testo sarà dato dall'input, per la data salviamo la data corrente in una costante, lo status sarà di default sent
 - alla funzione richiamata con enter deve partire un settimeout di 1000 ms in cui verrà visualizzato un messaggio con 
     - testo ok, status received, e data sempre quella corrente
+
+
+**MILESTONE 4 E 5**
+- creaiamo una funzione per restituire l'ultimo messaggio che compare in chat (quindi l'ultimo elemento dell'array messages)
+- da questo messaggio richiamiamo nell'html il testo e la data
+    - dalla data recuperiamo con uno slice solo la parte che ci interessa, ovvero l'orario 
+    - per inserire la data nei nuovi messaggi, salvo in una costante l'ora e data attuale formattata come nei dati iniziali (l'array contacts)
+- aggiugniamo un vento click allo chevron che si trova sui messaggi della chat
+    - cliccando si aprirà una finestra con la possibilità di cancellare l'oggetto (o nasconderlo?) dall'array messages
+- consideriamo tutti i nomi dei contatti come fossero un array di stringhe
+    - nell'input colleghiamo una variabile che andrà nella funzione filter
+    - la funzione filter dovrà restituire solo gli elementi che contengono (includes??) la stinga inserita nell'input
+    - aggiugniamo una flag false a tutti i nomi mentre a quelli restituiti un flag true, in base alla flag la chat thumb appare e scompare
 
