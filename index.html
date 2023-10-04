@@ -78,9 +78,9 @@
             <div class="d-flex justify-content-between w-100">
               <div class="d-flex flex-column ">
                 <span>{{ contact.name }}</span>
-                <span>{{ getLastMessage }}</span>
+                <span>{{ getLastMessage(contact).text }}</span>
               </div>
-              <span class="me-2">12:00</span>
+              <span class="me-2">{{ getLastMessage(contact).date.toString().slice(-8,-3) }}</span>
             </div>
           </div>
           
@@ -100,7 +100,7 @@
 
             <div class="d-flex flex-column">
               <span>{{contact.name}}</span>
-              <span>ultimo accesso oggi alle ore {{dtNowIt.hour}}:{{dtNowIt.minute}}</span>
+              <span>ultimo accesso oggi alle ore {{nowTime24}}</span>
             </div>
 
           </div>
@@ -146,8 +146,8 @@
           </button>
 
           <input class="form-control" type="text" placeholder="Scrivi un messaggio"
-          v-model="newTextMessage"
-          @keyup.enter="addNewTextMessage">
+          v-model="newMessage"
+          @keyup.enter="sendNewMessage">
 
           <button class="icon">
             <i class="fa-solid fa-microphone"></i>

@@ -1,11 +1,7 @@
-/*
-
-  - con la libreria luxon inserisci la data precisa
-
-*/
 
 import contacts from "./contacts.js";
 const dt = luxon.DateTime;
+const dtNow = dt.now().setLocale('it');
 const { createApp } = Vue;
 
 createApp ({
@@ -13,52 +9,55 @@ createApp ({
   data() {
     return {
       contacts, // importato
-      
-      myName: 'Aldo Aquino  ',
+      myName: 'Sofia',
+      newMessage: '',
       counter: 0,
-      newTextMessage: '',
-      dtNowIt: 0,
+      dtTime24: '',
     }
   },
 
   methods: {
-
     activeThumb(index) {
       this.contacts[this.counter].visible = !this.contacts[this.counter].visible;
       this.counter = index;
       this.contacts[this.counter].visible = !this.contacts[this.counter].visible;
     },
 
-    addNewTextMessage() {
+    sendNewMessage() {
       this.contacts[this.counter].messages.push({
-        date: '10/01/2020 15:30:55',
-        text: this.newTextMessage,
+        date: this.nowDateTime,
+        text: this.newMessage,
         status: 'sent'
       });
-
-      this.newTextMessage = '';
-
       setTimeout( () => {
         this.contacts[this.counter].messages.push({
-          date: '10/01/2020 15:30:55',
+          date: this.nowDateTime,
           text: 'ok!',
           status: 'received'
         });
-      }, 1000)
-
+      }, 3000)
+      this.newMessage = '';
     },
 
     getLastMessage(contact) {
-      return contact.messages[0].text
+      // return contact.messages[contact.messages.length - 1].text
+      return contact.messages.at(-1)
     },
 
-    
+  },
+
+  computed: {
+    nowTime24() {
+      return dtNow.toLocaleString(dt.TIME_SIMPLE);
+    },
+
+    nowDateTime() {
+      return dtNow.toLocaleString(dt.DATE_SHORT) + ' ' + dtNow.toLocaleString(dt.TIME_24_WITH_SECONDS);
+    }
   },
 
   mounted() {
-    this.dtNowIt = dt.now().setLocale('it');
-    const dataCompleta = this.dtNowIt.toLocaleString(dt.DATE_SHORT);
-    console.log(dataCompleta);
+    this.dtTime24 = this.nowTime24
   }
 
 }).mount('#app')
