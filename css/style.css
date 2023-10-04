@@ -145,7 +145,7 @@ i {
 
 #boolzap-main .chat-main {
   background-image: url('../img/mine.jpg');
-  background-size: cover;
+  background-repeat: repeat;
   overflow: scroll;
 }
 
