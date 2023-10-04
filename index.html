@@ -41,7 +41,7 @@
         <div class="my-account d-flex justify-content-between  ">
           <div class="my-avatar d-flex align-items-center gap-2 ">
             <img src="./img/avatar_io.jpg" alt="my avatar">
-            <span>{{myName}}</span>
+            <span class="fw-bold fs-6">{{myName}}</span>
           </div>
           <div class="icons d-flex gap-2 align-items-center">
             <i class="fa-solid fa-circle-notch"></i>  
@@ -77,7 +77,7 @@
             <img :src="contact.avatar" alt="primo tizio">
             <div class="d-flex justify-content-between w-100">
               <div class="d-flex flex-column ">
-                <span>{{ contact.name }}</span>
+                <span class="fs-6 fw-bold">{{ contact.name }}</span>
                 <span>{{ getLastMessage(contact).text }}</span>
               </div>
               <span class="me-2">{{ getLastMessage(contact).date.toString().slice(-8,-3) }}</span>
@@ -99,7 +99,7 @@
             <img  alt="avatar 1" :src="contact.avatar">
 
             <div class="d-flex flex-column">
-              <span>{{contact.name}}</span>
+              <span class="fs-6 fw-bold">{{contact.name}}</span>
               <span>ultimo accesso oggi alle ore {{nowTime24}}</span>
             </div>
 
@@ -121,14 +121,25 @@
 
             <div class="chat-main h-100 d-flex flex-column gap-2 p-4">
 
-              <div class="d-flex "
-              v-for="message in contact.messages"
-              :class="message.status" >
+              <div
+              v-for="(message, index) in contact.messages"
+              :class="[message.deleted ? 'hidden_a' : 'd-flex', message.status]"  >
 
-                <div class="text-message">
+                <div class="text-message" >
+
                   <span>{{message.text}}</span>
+
                   <span class="time-message">{{message.date}}</span>
-                  <i class="fa-solid fa-chevron-down"></i>
+
+                  <i class="fa-solid fa-chevron-down"
+                  @click="message.isMenuActive=!message.isMenuActive"></i>
+
+                  <div class="chevron-menu"
+                  :class="[message.isMenuActive ? 'd-flex' : 'hidden_a']" >
+                    <span>Message info</span>
+                    <span @click="message.deleted=true">Delete message</span>
+                  </div>
+
                 </div>
 
               </div>

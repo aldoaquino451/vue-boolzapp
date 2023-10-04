@@ -13,6 +13,9 @@ createApp ({
       newMessage: '',
       counter: 0,
       dtTime24: '',
+      isMenuActive: false,
+      isMessageActive: true,
+      deleted: false,
     }
   },
 
@@ -27,13 +30,17 @@ createApp ({
       this.contacts[this.counter].messages.push({
         date: this.nowDateTime,
         text: this.newMessage,
-        status: 'sent'
+        status: 'sent',
+        isMenuActive: false,
+        deleted: false,
       });
       setTimeout( () => {
         this.contacts[this.counter].messages.push({
           date: this.nowDateTime,
           text: 'ok!',
-          status: 'received'
+          status: 'received',
+          isMenuActive: false,
+          deleted: false,
         });
       }, 3000)
       this.newMessage = '';
@@ -43,6 +50,10 @@ createApp ({
       // return contact.messages[contact.messages.length - 1].text
       return contact.messages.at(-1)
     },
+
+    deleteMessage(message) {
+      message;
+    }
 
   },
 
@@ -57,7 +68,12 @@ createApp ({
   },
 
   mounted() {
-    this.dtTime24 = this.nowTime24
+    this.contacts.forEach(contact => {
+      contact.messages.forEach( message => {
+        message.isMenuActive = false
+        message.deleted = false
+      });
+    });
   }
 
 }).mount('#app')
