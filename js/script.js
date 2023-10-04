@@ -72,24 +72,20 @@ createApp ({
 
     filteredContacts() {
       return this.contacts.filter((contact) => {
-        return contact.name.toLowerCase().includes(this.searchInput);
+        contact.name.includes(this.searchInput);
       })
     },
-
-    // this.contacts.filter((contact) => {
-    //   // if (contact.visible === true)  return contact
-    //   // return contact.visible === true
-    //   return contact.name.toLowerCase().includes(this.searchInput.toLowerCase())
-    // }) 
   },
 
   mounted() {
+
     this.contacts.forEach(contact => {
       contact.messages.forEach( message => {
         message.isMenuActive = false
         message.deleted = false
       });
-    });
+    }); 
+
   }
 
 }).mount('#app')
