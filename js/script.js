@@ -1,8 +1,4 @@
-/*
-  USA LA FUNZIONE FILTER
-*/
-
-
+/* --------- INIT ---------- */
 
 import contacts from "./contacts.js";
 const dt = luxon.DateTime;
@@ -54,11 +50,9 @@ createApp ({
     },
 
     getLastMessage(contact) {
-      // return contact.messages[contact.messages.length - 1].text
       return contact.messages.at(-1)
+      // return contact.messages[contact.messages.length - 1].text
     },
-
-
   },
 
   computed: {
@@ -72,20 +66,29 @@ createApp ({
 
     filteredContacts() {
       return this.contacts.filter((contact) => {
-        contact.name.includes(this.searchInput);
+        if (this.searchInput === '') {
+          return contact
+        }
+        else {
+          if ( contact.name.toLowerCase().includes(this.searchInput.toString()) ) { 
+            return contact 
+          }
+        }
       })
     },
   },
 
   mounted() {
 
-    this.contacts.forEach(contact => {
+    this.contacts.forEach((contact, index) => {
+      contact.numbID = index
       contact.messages.forEach( message => {
         message.isMenuActive = false
         message.deleted = false
       });
     }); 
 
+    console.log(this.contacts);
   }
 
 }).mount('#app')

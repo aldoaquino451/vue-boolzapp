@@ -60,31 +60,40 @@
           </div>
         </div>
 
-        <div class="search">
+        <div class="search ">
           <div class="position-relative">
             <input 
             class="form-control" type="text" 
             placeholder="Cerca o inizia una nuova chat"
             v-model="searchInput">
-            <i class="fa-solid fa-magnifying-glass"></i>
+            <i class="fa-solid fa-magnifying-glass"></i> 
+            <i class="fa-solid fa-xmark"
+            @click="searchInput=''"></i>  
           </div>
         </div>
 
         <div class="chat-thumb-list">
 
           <div class="chat-thumb d-flex"
-          v-for="(contact, index) in filteredContacts"
-          @click="activeThumb(index)"
-          :class="[contact.visible ? 'active_a' : '']"
-          >
+          v-for="(contact) in filteredContacts"
+          @click="activeThumb(contact.numbID)"
+          :class="[contact.visible ? 'active_a' : '']">
+
             <img :src="contact.avatar" alt="primo tizio">
+            
             <div class="d-flex justify-content-between w-100">
+              
               <div class="d-flex flex-column ">
                 <span class="fs-6 fw-bold">{{ contact.name }}</span>
                 <span>{{ getLastMessage(contact).text }}</span>
               </div>
-              <span class="me-2">{{ getLastMessage(contact).date.toString().slice(-8,-3) }}</span>
+              
+              <span class="me-2">
+                {{ getLastMessage(contact).date.toString().slice(-8,-3) }}
+              </span>
+
             </div>
+
           </div>
           
         </div>
@@ -119,13 +128,13 @@
         <div class="chat-main-list">
 
           <div class="h-100"
-          v-for="(contact, index) in contacts"
+          v-for="(contact) in contacts"
           :class="[ contact.visible ? '' : 'hidden_a' ]" >
 
             <div class="chat-main h-100 d-flex flex-column gap-2 p-4">
 
               <div
-              v-for="(message, index) in contact.messages"
+              v-for="(message) in contact.messages"
               :class="[message.deleted ? 'hidden_a' : 'd-flex', message.status]"  >
 
                 <div class="text-message" >

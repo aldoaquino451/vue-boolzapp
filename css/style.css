@@ -100,11 +100,22 @@ i {
   font-size: 16px;
 }
 
-#boolzap-side .search .fa-magnifying-glass {
+#boolzap-side .search i {
   position: absolute;
-  left: 10px;
   top: 50%;
   transform: translateY(-50%);
+  font-size: 16px;
+}
+#boolzap-side .search .fa-magnifying-glass {
+  left: 10px;
+}
+#boolzap-side .search .fa-xmark {
+  right: 10px;
+  padding: 5px 10px;
+}
+#boolzap-side .search .fa-xmark:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 20%;
 }
 
 #boolzap-side .search input {
