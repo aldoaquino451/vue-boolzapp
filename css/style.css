@@ -157,28 +157,26 @@ i {
 /* ----------------------------- */
 
 
-#boolzap-main .chat-main .sent-message {
+#boolzap-main .chat-main .sent {
   justify-content: end;
 }
 
-#boolzap-main .chat-main .received-message {
+#boolzap-main .chat-main .received {
   justify-content: start;
 }
 
-
-#boolzap-main .chat-main .message {
+#boolzap-main .chat-main .received .text-message {
+  background-color: var(--message-left);
+}
+#boolzap-main .chat-main .sent .text-message {
+  background-color: var(--message-right);
+}
+#boolzap-main .chat-main .text-message {
   position: relative;
   padding: 10px 100px 10px 10px;
   border-radius: 5px;
   width: 300px;
 }
-#boolzap-main .chat-main .received-message .message {
-  background-color: var(--message-left);
-}
-#boolzap-main .chat-main .sent-message .message {
-  background-color: var(--message-right);
-}
-
 
 #boolzap-main .input-message .icon {
   margin: 0 5px;
@@ -195,14 +193,14 @@ i {
   border-radius: 5px;
 }
 
-#boolzap-main .chat-main-list .message .time-message {
+#boolzap-main .chat-main-list .text-message .time-message {
   position: absolute;
   right: 5px;
   bottom: 2px;
   font-size: 10px;
   color: grey;
 }
-#boolzap-main .chat-main-list .message .fa-chevron-down {
+#boolzap-main .chat-main-list .text-message .fa-chevron-down {
   position: absolute;
   right: 5px;
   top: 2px;
