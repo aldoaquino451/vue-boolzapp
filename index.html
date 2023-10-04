@@ -41,7 +41,7 @@
         <div class="my-account d-flex justify-content-between  ">
           <div class="my-avatar d-flex align-items-center gap-2 ">
             <img src="./img/avatar_io.jpg" alt="my avatar">
-            <span>mio nome</span>
+            <span>{{myName}}</span>
           </div>
           <div class="icons d-flex gap-2 align-items-center">
             <i class="fa-solid fa-circle-notch"></i>  
@@ -78,7 +78,7 @@
             <div class="d-flex justify-content-between w-100">
               <div class="d-flex flex-column ">
                 <span>{{ contact.name }}</span>
-                <span>Ultimo messaggio inviato</span>
+                <span>{{ getLastMessage }}</span>
               </div>
               <span class="me-2">12:00</span>
             </div>
@@ -100,7 +100,7 @@
 
             <div class="d-flex flex-column">
               <span>{{contact.name}}</span>
-              <span>ultimo accesso oggi alle ore 12:00</span>
+              <span>ultimo accesso oggi alle ore {{dtNowIt.hour}}:{{dtNowIt.minute}}</span>
             </div>
 
           </div>
@@ -123,9 +123,9 @@
 
               <div class="d-flex "
               v-for="message in contact.messages"
-              :class="[message.status === 'sent' ? 'sent-message' : 'received-message']" >
+              :class="message.status" >
 
-                <div class="message">
+                <div class="text-message">
                   <span>{{message.text}}</span>
                   <span class="time-message">{{message.date}}</span>
                   <i class="fa-solid fa-chevron-down"></i>

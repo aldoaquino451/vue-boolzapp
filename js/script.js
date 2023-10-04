@@ -12,12 +12,12 @@ createApp ({
 
   data() {
     return {
-    
       contacts, // importato
-
+      
+      myName: 'Aldo Aquino  ',
       counter: 0,
       newTextMessage: '',
-
+      dtNowIt: 0,
     }
   },
 
@@ -48,14 +48,17 @@ createApp ({
 
     },
 
+    getLastMessage(contact) {
+      return contact.messages[0].text
+    },
+
     
   },
 
   mounted() {
-    console.log(this.contacts[this.counter].messages[0].text);
-    const dtNow = dt.now();
-    const dtNowIt = dt.now().setLocale('it');
-    console.log(dtNowIt.minute);
+    this.dtNowIt = dt.now().setLocale('it');
+    const dataCompleta = this.dtNowIt.toLocaleString(dt.DATE_SHORT);
+    console.log(dataCompleta);
   }
 
 }).mount('#app')
