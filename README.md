@@ -51,13 +51,13 @@ Visualizzazione ora e ultimo messaggio inviato/ricevuto nella lista dei contatti
 
 
 **MILESTONE 4 E 5**
-- creaiamo una funzione per restituire l'ultimo messaggio che compare in chat (quindi l'ultimo elemento dell'array messages)
-- da questo messaggio richiamiamo nell'html il testo e la data
+1. creaiamo una funzione per restituire l'ultimo messaggio che compare in chat (quindi l'ultimo elemento dell'array messages)
+    - da questo messaggio richiamiamo nell'html il testo e la data
     - dalla data recuperiamo con uno slice solo la parte che ci interessa, ovvero l'orario 
     - per inserire la data nei nuovi messaggi, salvo in una costante l'ora e data attuale formattata come nei dati iniziali (l'array contacts)
-- aggiugniamo un vento click allo chevron che si trova sui messaggi della chat
+2. aggiugniamo un vento click allo chevron che si trova sui messaggi della chat
     - cliccando si aprirà una finestra con la possibilità di cancellare l'oggetto (o nasconderlo?) dall'array messages
-- consideriamo tutti i nomi dei contatti come fossero un array di stringhe
+3. consideriamo tutti i nomi dei contatti come fossero un array di stringhe
     - nell'input colleghiamo una variabile che andrà nella funzione filter
     - la funzione filter dovrà restituire solo gli elementi che contengono (includes??) la stinga inserita nell'input
     - aggiugniamo una flag false a tutti i nomi mentre a quelli restituiti un flag true, in base alla flag la chat thumb appare e scompare

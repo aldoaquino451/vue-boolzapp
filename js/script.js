@@ -1,3 +1,8 @@
+/*
+  USA LA FUNZIONE FILTER
+*/
+
+
 
 import contacts from "./contacts.js";
 const dt = luxon.DateTime;
@@ -16,11 +21,13 @@ createApp ({
       isMenuActive: false,
       isMessageActive: true,
       deleted: false,
+      searchInput: '',
     }
   },
 
   methods: {
     activeThumb(index) {
+      if (this.counter !== index) this.newMessage = ''
       this.contacts[this.counter].visible = !this.contacts[this.counter].visible;
       this.counter = index;
       this.contacts[this.counter].visible = !this.contacts[this.counter].visible;
@@ -51,10 +58,13 @@ createApp ({
       return contact.messages.at(-1)
     },
 
-    deleteMessage(message) {
-      message;
-    }
-
+    filter() {
+      this.contacts = this.contacts.filter((contact) => {
+        // if (contact.visible === true)  return contact
+        // return contact.visible === true
+        return contact.name.toLowerCase().includes(this.searchInput)
+      }) 
+    },
   },
 
   computed: {
@@ -74,6 +84,10 @@ createApp ({
         message.deleted = false
       });
     });
+
+
+
+    console.log(ciao);
   }
 
 }).mount('#app')
