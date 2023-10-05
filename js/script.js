@@ -48,6 +48,7 @@ createApp ({
         this.newMessage = '';
         
         console.log(contact.messages);
+        console.log(contact);
       }  
       else this.newMessage = '';
       
@@ -58,9 +59,12 @@ createApp ({
       // return contact.messages[contact.messages.length - 1].text
     },
 
-    deleteMessage() {
-      console.log('ricorda il delete message');
+
+    deleteMessage(contact, message) {
+      contact.messages.splice(message.numbID, 1)
     },
+
+
   },
 
   computed: {
@@ -79,6 +83,7 @@ createApp ({
         if (names.includes(words)) return contact 
       })
     },
+
   },
 
   mounted() {
@@ -89,6 +94,9 @@ createApp ({
         message.numbID = index
       });
     }); 
+
+    this.contacts[0].messages.slice(0, 1);
+
   }
 
 }).mount('#app')
