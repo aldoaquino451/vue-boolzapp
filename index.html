@@ -134,7 +134,7 @@
             <div class="chat-main h-100 d-flex flex-column gap-2 p-4">
 
               <div
-              v-for="(message) in contact.messages"
+              v-for="message in contact.messages"
               :class="[message.deleted ? 'hidden_a' : 'd-flex', message.status]"  >
 
                 <div class="text-message" >
@@ -143,13 +143,13 @@
 
                   <span class="time-message">{{message.date}}</span>
 
-                  <i class="fa-solid fa-chevron-down"
-                  @click="message.isMenuActive=!message.isMenuActive"></i>
+                  <div class="menu">
+                    <i class="fa-solid fa-chevron-down"></i>
 
-                  <div class="chevron-menu"
-                  :class="[message.isMenuActive ? 'd-flex' : 'hidden_a']" >
-                    <span>Message info</span>
-                    <span @click="message.deleted=true">Delete message</span>
+                    <div class="chevron-menu" >
+                      <span>Message Info</span>
+                      <span @click="message.deleted=true">Delete message</span>
+                    </div>  
                   </div>
 
                 </div>

@@ -14,7 +14,6 @@ createApp ({
       newMessage: '',
       counter: 0,
       dtTime24: '',
-      isMenuActive: false,
       isMessageActive: true,
       deleted: false,
       searchInput: '',
@@ -34,7 +33,6 @@ createApp ({
         date: this.nowDateTime,
         text: this.newMessage,
         status: 'sent',
-        isMenuActive: false,
         deleted: false,
       });
       setTimeout( () => {
@@ -42,7 +40,6 @@ createApp ({
           date: this.nowDateTime,
           text: 'ok!',
           status: 'received',
-          isMenuActive: false,
           deleted: false,
         });
       }, 3000)
@@ -83,7 +80,6 @@ createApp ({
     this.contacts.forEach((contact, index) => {
       contact.numbID = index
       contact.messages.forEach( message => {
-        message.isMenuActive = false
         message.deleted = false
       });
     }); 
