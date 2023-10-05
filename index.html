@@ -33,28 +33,28 @@
 
 <body>
 
-  <div id="app" class="d-flex justify-content-center align-items-center ">
-    <div id="boolzap-viewport" class="d-flex">
+  <div id="app" class="d-flex_a justify-content-center align-items-center ">
+    <div id="boolzap-viewport" class="d-flex_a">
 
-      <div id="boolzap-side" class="d-flex flex-column ">
+      <div id="boolzap-side" class="d-flex_a flex-column ">
 
-        <div class="my-account d-flex justify-content-between  ">
-          <div class="my-avatar d-flex align-items-center gap-2 ">
+        <div class="my-account d-flex_a justify-content-between  ">
+          <div class="my-avatar d-flex_a align-items-center gap-2 ">
             <img src="./img/avatar_io.jpg" alt="my avatar">
             <span class="fw-bold fs-6">{{myName}}</span>
           </div>
-          <div class="icons d-flex gap-2 align-items-center">
+          <div class="icons d-flex_a gap-2 align-items-center">
             <i class="fa-solid fa-circle-notch"></i>  
             <i class="fa-solid fa-message"></i>
             <i class="fa-solid fa-ellipsis-vertical me-2"></i>
           </div>
         </div>
 
-        <div class="notifications d-flex gap-3 align-items-center">
-          <div class="notifications-icon d-flex justify-content-center align-items-center ">
+        <div class="notifications d-flex_a gap-3 align-items-center">
+          <div class="notifications-icon d-flex_a justify-content-center align-items-center ">
             <i class="fa-solid fa-bell-slash"></i>
           </div>
-          <div class="d-flex flex-column">
+          <div class="d-flex_a flex-column">
             <span class="fw-bold">Ricevi notifiche di nuovi messaggi</span>
             <span class="text-decoration-underline">Attiva notifiche desktop</span>
           </div>
@@ -74,16 +74,16 @@
 
         <div class="chat-thumb-list">
 
-          <div class="chat-thumb d-flex"
-          v-for="(contact) in filteredContacts"
+          <div class="chat-thumb d-flex_a"
+          v-for="contact in filteredContacts"
           @click="activeThumb(contact.numbID)"
           :class="[contact.visible ? 'active_a' : '']">
 
             <img :src="contact.avatar" alt="primo tizio">
             
-            <div class="d-flex justify-content-between w-100">
+            <div class="d-flex_a justify-content-between w-100">
               
-              <div class="d-flex flex-column ">
+              <div class="d-flex_a flex-column ">
                 <span class="fs-6 fw-bold">{{ contact.name }}</span>
                 <span>{{ getLastMessage(contact).text }}</span>
               </div>
@@ -100,24 +100,24 @@
 
       </div>
       
-      <div id="boolzap-main" class="d-flex flex-column">
+      <div id="boolzap-main" class="d-flex_a flex-column">
         
-        <div class="receiver d-flex justify-content-between ">
+        <div class="receiver d-flex_a justify-content-between ">
 
           <div class="gap-2 align-items-center"
             v-for="contact in contacts"
-            :class="[ contact.visible ? 'd-flex' : 'hidden_a']">
+            :class="[ contact.visible ? 'd-flex_a' : 'hidden_a']">
 
             <img  alt="avatar 1" :src="contact.avatar">
 
-            <div class="d-flex flex-column">
+            <div class="d-flex_a flex-column">
               <span class="fs-6 fw-bold">{{contact.name}}</span>
               <span>ultimo accesso oggi alle ore {{nowTime24}}</span>
             </div>
 
           </div>
 
-          <div class="d-flex gap-3 align-items-center">
+          <div class="d-flex_a gap-3 align-items-center">
             <i class="fa-solid fa-magnifying-glass"></i>
             <i class="fa-solid fa-paperclip"></i>
             <i class="fa-solid fa-ellipsis-vertical me-2"></i>
@@ -128,14 +128,15 @@
         <div class="chat-main-list">
 
           <div class="h-100"
-          v-for="(contact) in contacts"
+          v-for="contact in contacts"
           :class="[ contact.visible ? '' : 'hidden_a' ]" >
 
-            <div class="chat-main h-100 d-flex flex-column gap-2 p-4">
+            <div class="chat-main h-100 d-flex_a flex-column gap-3 p-4">
 
               <div
               v-for="message in contact.messages"
-              :class="[message.deleted ? 'hidden_a' : 'd-flex', message.status]"  >
+              class="d-flex_a"
+              :class="message.status">
 
                 <div class="text-message" >
 
@@ -148,7 +149,7 @@
 
                     <div class="chevron-menu" >
                       <span>Message Info</span>
-                      <span @click="message.deleted=true">Delete message</span>
+                      <span @click="deleteMessage">Delete message</span>
                     </div>  
                   </div>
 
@@ -162,7 +163,7 @@
   
         </div>
 
-        <div class="input-message d-flex align-items-center">
+        <div class="input-message d-flex_a align-items-center">
 
           <button class="icon">
             <i class="fa-regular fa-face-smile"></i>

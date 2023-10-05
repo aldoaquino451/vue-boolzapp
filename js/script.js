@@ -14,8 +14,6 @@ createApp ({
       newMessage: '',
       counter: 0,
       dtTime24: '',
-      isMessageActive: true,
-      deleted: false,
       searchInput: '',
     }
   },
@@ -29,21 +27,30 @@ createApp ({
     },
 
     sendNewMessage() {
-      this.contacts[this.counter].messages.push({
-        date: this.nowDateTime,
-        text: this.newMessage,
-        status: 'sent',
-        deleted: false,
-      });
-      setTimeout( () => {
-        this.contacts[this.counter].messages.push({
+      const contact = this.contacts[this.counter]
+      const messages = this.contacts[this.counter].messages
+
+      if ( this.newMessage.trim() !== '') {
+        contact.messages.push({
           date: this.nowDateTime,
-          text: 'ok!',
-          status: 'received',
-          deleted: false,
+          text: this.newMessage,
+          status: 'sent',
+          numbID: messages.length,
         });
-      }, 3000)
-      this.newMessage = '';
+        setTimeout( () => {
+          contact.messages.push({
+            date: this.nowDateTime,
+            text: 'ok!',
+            status: 'received',
+            numbID: messages.length,
+          });
+        }, 2000)
+        this.newMessage = '';
+        
+        console.log(contact.messages);
+      }  
+      else this.newMessage = '';
+      
     },
 
     getLastMessage(contact) {
@@ -62,15 +69,10 @@ createApp ({
     },
 
     filteredContacts() {
-      return this.contacts.filter((contact) => {
-        if (this.searchInput === '') {
-          return contact
-        }
-        else {
-          if ( contact.name.toLowerCase().includes(this.searchInput.toString()) ) { 
-            return contact 
-          }
-        }
+      return this.contacts.filter(contact => {
+        const names = contact.name.toLowerCase().trim();
+        const words = this.searchInput.toString().trim();
+        if (names.includes(words)) return contact 
       })
     },
   },
@@ -79,12 +81,10 @@ createApp ({
 
     this.contacts.forEach((contact, index) => {
       contact.numbID = index
-      contact.messages.forEach( message => {
-        message.deleted = false
+      contact.messages.forEach( (message, index) => {
+        message.numbID = index
       });
     }); 
-
-    console.log(this.contacts);
   }
 
 }).mount('#app')
