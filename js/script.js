@@ -57,6 +57,10 @@ createApp ({
       return contact.messages.at(-1)
       // return contact.messages[contact.messages.length - 1].text
     },
+
+    deleteMessage() {
+      console.log('ricorda il delete message');
+    },
   },
 
   computed: {
