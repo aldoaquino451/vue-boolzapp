@@ -5,6 +5,7 @@ const dt = luxon.DateTime;
 const dtNow = dt.now().setLocale('it');
 const { createApp } = Vue;
 
+
 createApp ({
 
   data() {
@@ -55,13 +56,22 @@ createApp ({
     },
 
     getLastMessage(contact) {
-      return contact.messages.at(-1)
-      // return contact.messages[contact.messages.length - 1].text
+      if (contact.messages.length > 0) {
+        return contact.messages.at(-1).text
+      }
+      return ''
+    },
+
+    getLastHour(contact) {
+      if (contact.messages.length > 0) {
+        return contact.messages.at(-1).date.toString().slice(-8,-3)
+      }
+      return ''
     },
 
 
-    deleteMessage(contact, message) {
-      contact.messages.splice(message.numbID, 1)
+    deleteMessage(index, messages) {
+      messages.splice(index, 1)
     },
 
 
@@ -80,7 +90,13 @@ createApp ({
       return this.contacts.filter(contact => {
         const names = contact.name.toLowerCase().trim();
         const words = this.searchInput.toString().trim();
-        if (names.includes(words)) return contact 
+        // return names.includes(words) 
+        return contact.name
+                    .toLowerCase()
+                    .trim()
+                    .includes(
+                      this.searchInput.toLowerCase().trim()
+                    ) 
       })
     },
 

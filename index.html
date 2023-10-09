@@ -85,11 +85,11 @@
               
               <div class="d-flex_a flex-column ">
                 <span class="fs-6 fw-bold">{{ contact.name }}</span>
-                <span>{{ getLastMessage(contact).text }}</span>
+                <span>{{ getLastMessage(contact) }}</span>
               </div>
               
               <span class="me-2">
-                {{ getLastMessage(contact).date.toString().slice(-8,-3) }}
+                {{ getLastHour(contact) }}
               </span>
 
             </div>
@@ -134,7 +134,7 @@
             <div class="chat-main h-100 d-flex_a flex-column gap-3 p-4">
 
               <div
-              v-for="message in contact.messages"
+              v-for="(message, index) in contact.messages"
               class="d-flex_a"
               :class="message.status">
 
@@ -146,10 +146,9 @@
 
                   <div class="menu">
                     <i class="fa-solid fa-chevron-down"></i>
-
                     <div class="chevron-menu" >
                       <span>Message Info</span>
-                      <span @click="deleteMessage(contact, message)">Delete message</span>
+                      <span @click="deleteMessage(index, contact.messages)">Delete message</span>
                     </div>  
                   </div>
 
